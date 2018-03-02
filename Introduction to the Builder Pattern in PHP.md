@@ -1,9 +1,15 @@
----
+<!DOCTYPE html>
+<html>
 
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Introduction to the Builder Pattern in PHP</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
 
----
-
-<h1 id="introduction-to-the-builder-pattern-in-php">Introduction to the Builder Pattern in PHP</h1>
+<body class="stackedit">
+  <div class="stackedit__html"><h1 id="introduction-to-the-builder-pattern-in-php">Introduction to the Builder Pattern in PHP</h1>
 <p>The Builder pattern is one of the “Gang of Four” (GoF) design patterns. It is classified as a <em>creational design pattern</em> – i.e. it’s intended to address some brittle historical practices (i.e. anti-patterns) for creating object instances.</p>
 <p>When using the Builder pattern, we create an object of one type by creating an object of a second, supporting type, invoking a number of methods on the second object, ending with a method that returns a fully constructed object instance (often immutable) of the first type.</p>
 <h2 id="scenario">Scenario</h2>
@@ -317,4 +323,7 @@
 <p>Script with 3 usage examples.</p>
 </li>
 </ul>
+</div>
+</body>
 
+</html>
