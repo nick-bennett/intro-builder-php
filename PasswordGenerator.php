@@ -1,10 +1,10 @@
 <?php
 
 /**
- * Abstract superclass of concrete implementations of random password gn
- * generators. There are actually no abstract methods in this class; it is
- * deliberately abstract so that it can only be constructed (as implemented
- * here) by the Builder pattern, using the {@link PasswordGeneratorBuilder}.
+ * Abstract superclass of random password generators. There are actually no
+ * abstract methods in this class; it is deliberately abstract so that it can 
+ * only be constructed (as implemented here) by the Builder pattern, using the 
+ * {@link PasswordGeneratorBuilder}.
  */
 abstract class PasswordGenerator
 {
@@ -62,8 +62,6 @@ abstract class PasswordGenerator
      * password is requested, an array of strings is returned; otherwise, a
      * string is returned.
      *
-     * it is returned a
-     *
      * @param int $length number of characters in password.
      * @param int $count number of passwords to generate.
      * @return mixed          generated password, or array of passwords.
@@ -82,7 +80,7 @@ abstract class PasswordGenerator
      * Generates a single, simple password (possibly partial, and without
      * advanced policy processing) from the specified pool of characters.
      *
-     * @param array $pool characters to draw from for this (possibly partial) password.
+     * @param array $pool characters to draw from for this password.
      * @param int $length number of characters in password.
      * @return string         generated password.
      * @throws Exception      if no CSPRNG stream of bits is available.
@@ -99,7 +97,7 @@ abstract class PasswordGenerator
 
     /**
      * Generates a single password from the full pool of characters. To
-     * implement advanced password policies, this method should be overridden.
+     * implement advanced password policies, this method can be overridden.
      *
      * @param int $length number of characters in password.
      * @return string         generated password.
@@ -113,8 +111,8 @@ abstract class PasswordGenerator
 }
 
 /**
- * Abstract superclass for builder objects that know how to create and
- * initialize instances of {@link PasswordGenerator} concrete subclasses..
+ * Abstract superclass for builder objects that create and intialize
+ * instances of {@link PasswordGenerator} concrete subclasses..
  */
 abstract class PasswordGeneratorBuilder
 {
