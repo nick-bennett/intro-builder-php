@@ -334,7 +334,7 @@ This usage is illustrated in the following code (condensed from the accompanying
 $generator = PasswordGenerator::builder()->build();
 
 // Generate a single password with the default length.
-echo $generator->generate() . "\n";
+echo $generator->generate(), "\n";
 
 // Build a generator with punctuation excluded from the pool.
 $generator = PasswordGenerator::builder()
@@ -342,7 +342,7 @@ $generator = PasswordGenerator::builder()
     ->build();
 
 // Generate a single password of length 16.
-echo $generator->generate(16) . "\n";
+echo $generator->generate(16), "\n";
  
 /* 
  * Build a generator with digits & punctuation excluded, requiring at least 1
@@ -356,7 +356,7 @@ $generator = PasswordGenerator::builder()
     ->build();
 
 // Generate 10 passwords of 16 characters each.
-echo print_r($generator->generate(16, 10), true) . "\n";
+echo print_r($generator->generate(16, 10), true), "\n";
 ```
 
 At first glance, this usage choreography probably seems convoluted&mdash;and in fact, the Builder pattern doesn't require that we do things exactly this way. But this aspect of the implementation lets us define both of these classes as `abstract` classes, with `protected` constructors. There will be _no way_ for consumer code to create an instances of either of these two classes using the **`new`** keyword with a constructor; it will have to use the methods mentioned above&mdash;which is exactly what we wanted. Further, since these are both `abstract` classes, some of the more specialized aspects of the processing will be performed by overridden methods in subclasses. Implementing in this fashion should give us a lot of flexibility for further subclassing, as necessary (e.g. for specialized password generation requirements we haven't anticipated yet).
