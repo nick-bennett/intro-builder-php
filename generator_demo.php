@@ -4,7 +4,10 @@ require_once('PasswordGenerator.php');
 
 echo "\nBasic use:\n";
 
-echo "\n" . PasswordGenerator::builder()->build()->generate(12) . "\n";
+$generator = PasswordGenerator::builder()
+    ->build();
+
+echo "\n" . $generator->generate(12) . "\n";
 
 echo "\nExclude all punctuation:\n";
 
