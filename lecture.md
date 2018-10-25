@@ -1,3 +1,7 @@
+---
+title: Lecture Notes
+---
+
 ## Background
 
 The Builder pattern is one of the "Gang of Four" (GoF) design patterns. It is classified as a _creational design pattern_&mdash;i.e. it's intended to address some brittle historical practices (i.e. anti-patterns) for creating object instances.
