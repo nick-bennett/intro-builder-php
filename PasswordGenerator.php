@@ -69,7 +69,7 @@ abstract class PasswordGenerator
      * @return mixed          generated password, or array of passwords.
      * @throws Exception      if no CSPRNG stream of bits is available.
      */
-    public function generate(int $length, int $count = 1)
+    public function generate(int $length = 12, int $count = 1)
     {
         $passwords = [];
         for ($i = 0; $i < $count; $i++) {
