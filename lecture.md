@@ -23,7 +23,7 @@ A client has asked us to develop a random password generator component. In joint
 
 4. In general, the generator should support all of the punctuation and symbol characters in the Basic Latin Unicode block, except for the space character (i.e. valid characters are in the ranges `\u0021–\u002F`, `\u003A–\u0040`, `\u005B–\u0060`, `\u007B–\u007E`). However, on exploring the contexts in which the generated passwords might be used, we agreed with the client that the generator should support some constraints on punctuation and symbols&mdash;specifically, the generator must allow, on initialization, the exclusion of a subset of punctuation and symbol characters. (More generally, we may opt to provide a mechanism for excluding *any* characters that would otherwise be considered valid.)
 
-5. The generator must allow optional exclusion of the mutually ambiguous character pairs, "1" &amp; "l" (lower-case "L"), and "0" (zero) &amp; upper-case "O". This option must be enabled by default.
+5. The generator must allow optional exclusion of the mutually ambiguous character pairs, "1" &amp; "l" (lower-case "L"), and "0" (zero) &amp; upper-case "O". This option must be enabled by default&mdash;though it has no effect if digits are excluded.
 
 6. The generator class should have no dependencies on external configuration files. _All_ of the above configuration should be specifiable by the class's consumer.
 
