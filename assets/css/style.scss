@@ -4,13 +4,54 @@
 @import "{{ site.theme }}";
 
 .wrapper {
-  width: 920px;
+  width: 96.5%;
+  max-width: 1080
   margin: 0 auto;
 }
 
+header {
+  width: 25%;
+  float: left;
+  position: fixed;
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+
 section {
-  width: 640px;
+  width: 70%;
   float: right;
   padding-bottom: 20px;
 }
 
+@media print, screen and (max-width: 960px) {
+
+  div.wrapper {
+    width: auto;
+    margin: 0;
+  }
+
+  header, section, footer {
+    float: none;
+    position: static;
+    width: auto;
+  }
+
+  header {
+    padding-right: 240px;
+  }
+
+  section {
+    border: 1px solid #e5e5e5;
+    border-width: 1px 0;
+    padding: 20px 0;
+    margin: 0 0 20px;
+  }
+
+}
+
+@media print, screen and (max-width: 720px) {
+ 
+  header {
+    padding: 0;
+  }
+
+}
