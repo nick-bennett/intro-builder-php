@@ -316,7 +316,7 @@ Let's examine a different approach altogether. Instead of one class with a compl
 
     This class is the type returned  by the `build` method of **`PasswordGeneratorBuilder`**. The API for this class will be extremely simple, including just 2 public methods: 
     
-    * `generate(int $length, $int count = 1)` 
+    * `generate(int $length = 12, $int count = 1)` 
 
         This method will generate and return passwords.
 
@@ -325,6 +325,38 @@ Let's examine a different approach altogether. Instead of one class with a compl
         This will be a `static` method, creating and returning an instance of **`PasswordGeneratorBuilder`** (or of a subclass of that).
 
 To summarize how these classes will be used: the consumer code will invoke **`PasswordGenerator::builder`** to get an instance of **`PasswordGeneratorBuilder`**; then, after setting options via methods of the latter class, the consumer will use the **`build`** method of that class to get a **`PasswordGenerator`**, and then use the `generate` method of _that_ class to generate passwords.
+
+This usage is illustrated in the following code (condensed from the accompanying [`generator_demo.php`](generator_demo.php) file).
+
+```php
+// Build a generator with the default options.
+$generator = PasswordGenerator::builder()->build();
+
+// Generate a single password with the default length.
+echo $generator->generate() . "\n";
+
+// Build a generator with punctuation excluded from the pool.
+$generator = PasswordGenerator::builder()
+    ->includePunctuation(false)
+    ->build();
+
+// Generate a single password of length 16.
+echo $generator->generate(16) . "\n";
+ 
+/* 
+ * Build a generator with digits & punctuation excluded, requiring at least 1
+ * upper- & 1 lower-case letter.
+ */
+$generator = PasswordGenerator::builder()
+    ->includeDigit(false)
+    ->includePunctuation(false)
+    ->requireUpper(1)
+    ->requireLower(1)
+    ->build();
+
+// Generate 10 passwords of 16 characters each.
+echo print_r($generator->generate(16, 10), true) . "\n";
+```
 
 At first glance, this usage choreography probably seems convoluted&mdash;and in fact, the Builder pattern doesn't require that we do things exactly this way. But this aspect of the implementation lets us define both of these classes as `abstract` classes, with `protected` constructors. There will be _no way_ for consumer code to create an instances of either of these two classes using the **`new`** keyword with a constructor; it will have to use the methods mentioned above&mdash;which is exactly what we wanted. Further, since these are both `abstract` classes, some of the more specialized aspects of the processing will be performed by overridden methods in subclasses. Implementing in this fashion should give us a lot of flexibility for further subclassing, as necessary (e.g. for specialized password generation requirements we haven't anticipated yet).
 
